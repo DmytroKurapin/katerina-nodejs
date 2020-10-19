@@ -1,0 +1,23 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+*~
+*.sw[mnpcod]
+*.log
+*.tmp
+*.tmp.*
+log.txt
+npm-debug.log*
+
+.idea/
+.tmp/
+www/
+node_modules/
+tmp/
+temp/
+$RECYCLE.BIN/
+
+Thumbs.db
+
+/src/_fake-data
+.env

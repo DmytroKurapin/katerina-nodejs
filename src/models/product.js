@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const productSchema = mongoose.Schema({
+const productSchema = mongoose.Schema(
+ {
   _id: mongoose.SchemaTypes.ObjectID,
   category: { type: String, required: true },
   vendorCode: { type: String, required: true, index: { unique: true } },
@@ -11,7 +12,8 @@ const productSchema = mongoose.Schema({
   images: { type: Object, required: true },
   price: { type: String, required: true },
   order: { type: Number, required: true },
-});
+},
+ { _id: false });
 // subCategories is the last in the list of indexes, because there cases when any subCat is selected
 productSchema.index({ category: 1, order: -1, subCategories: 1 });
 

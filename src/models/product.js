@@ -12,6 +12,7 @@ const productSchema = mongoose.Schema(
   images: { type: Object, required: true },
   price: { type: String, required: true },
   order: { type: Number, required: true },
+  sizes: { type: Object, required: true },
 },
  { _id: false });
 // subCategories is the last in the list of indexes, because there cases when any subCat is selected

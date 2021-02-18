@@ -1,12 +1,8 @@
 const Product = require('../../models/product');
 
 module.exports = {
-  createProduct: async () => {
-
-  },
-  getProduct: async vendorCode => {
-
-  },
+  createProduct: async () => {},
+  getProduct: async vendorCode => {},
   /**
    * get One product from DB by its vendor code
    * @param {string} vendorCode - product vendor code
@@ -33,5 +29,5 @@ module.exports = {
     const queryObj = Object.assign({ category });
 
     return Product.find(queryObj, null, { sort: { order: -1 } }).lean();
-  },
-}
+  }
+};

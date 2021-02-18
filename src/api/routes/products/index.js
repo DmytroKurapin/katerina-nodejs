@@ -15,4 +15,3 @@ router.get('/vendor/:vendorCode', require('./getOneByVendorCode'));
 router.get('/vendors', require('./getMultipleByVendorCodes'));
 
 module.exports = router;
-

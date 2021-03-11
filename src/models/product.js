@@ -12,7 +12,7 @@ const productSchema = mongoose.Schema(
     images: { type: Object, required: true },
     price: { type: String, required: true },
     order: { type: Number, required: true },
-    isVideo: { type: Boolean, default: false },
+    video: { type: String, default: null },
     related: { type: Object, required: true }, // array of vendor codes
     similar: { type: Object, required: true } // array of vendor codes
   },

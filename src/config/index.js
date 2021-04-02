@@ -4,5 +4,6 @@ module.exports = {
   endpoint: process.env.API_URL,
   masterKey: process.env.API_KEY,
   port: process.env.PORT,
-  mongoUrl: process.env.MONGO_URL
+  mongoUrl: process.env.MONGO_URL,
+  filesUploadFolder: process.env.FILES_UPLOAD_FOLDER
 };

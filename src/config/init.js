@@ -5,20 +5,20 @@ module.exports = {
   initializeDB: async () => {
     mongoose.connect(mongoUrl, { useNewUrlParser: true, useFindAndModify: false });
 
-    mongoose.connection.on('connected', function () {
+    mongoose.connection.on('connected', function() {
       console.log('Mongoose default connection open');
     });
 
-    mongoose.connection.on('error', function (err) {
+    mongoose.connection.on('error', function(err) {
       console.log('Mongoose default connection error: ' + err);
     });
 
-    mongoose.connection.on('disconnected', function () {
+    mongoose.connection.on('disconnected', function() {
       console.log('Mongoose default connection disconnected');
     });
 
-    process.on('SIGINT', function () {
-      mongoose.connection.close(function () {
+    process.on('SIGINT', function() {
+      mongoose.connection.close(function() {
         console.log('Mongoose default connection disconnected through app termination');
         process.exit(0);
       });

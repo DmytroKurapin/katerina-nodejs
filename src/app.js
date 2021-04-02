@@ -2,12 +2,19 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const config = require('./config/init');
-const path = require('path');
+const fileUpload = require('express-fileupload');
 
 //routes
 const routes = require('./api/routes');
 
 config.initializeDB();
+
+// enable files upload
+app.use(
+  fileUpload({
+    createParentPath: true
+  })
+);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

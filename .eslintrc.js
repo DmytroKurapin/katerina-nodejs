@@ -3,12 +3,12 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es6: true,
+    es6: true
   },
   plugins: ['prettier'],
   extends: 'eslint:recommended',
   parserOptions: {
-    ecmaVersion: 2017,
+    ecmaVersion: 2017
   },
   rules: {
     'prettier/prettier': 'error',
@@ -36,6 +36,6 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'implicit-arrow-linebreak': 'off',
     'operator-linebreak': 'off',
-    semi: [2, 'always'],
-  },
+    semi: [2, 'always']
+  }
 };

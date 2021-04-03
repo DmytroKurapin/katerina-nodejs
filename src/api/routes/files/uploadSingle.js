@@ -1,3 +1,4 @@
+const path = require('path');
 const { filesUploadFolder } = require('../../../config');
 const { checkFileExt } = require('../../../services/helpers');
 
@@ -8,8 +9,8 @@ module.exports = async (req, res) => {
     } else {
       const fileData = req.files.file;
       if (checkFileExt(fileData)) {
-        const filePath = filesUploadFolder + fileData.name;
-        await fileData.mv(filePath);
+        const filePath = path.join('images', fileData.name);
+        await fileData.mv(path.join(filesUploadFolder, filePath));
 
         return res.status(200).json({ status: 'success', meta: filePath });
       }

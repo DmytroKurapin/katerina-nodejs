@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const config = require('./config/init');
+const { filesUploadFolder } = require('./config');
 const fileUpload = require('express-fileupload');
 
 //routes
@@ -18,6 +19,7 @@ app.use(
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static(filesUploadFolder));
 
 app.use(config.cors);
 

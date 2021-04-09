@@ -10,6 +10,7 @@ const productSchema = mongoose.Schema(
     subCategories: { type: Object, required: true },
     thumbnail: { type: String, required: true },
     images: { type: Object, required: true },
+    sizes: { type: Object, required: true },
     price: { type: String, required: true },
     order: { type: Number, required: true },
     video: { type: String, default: null },

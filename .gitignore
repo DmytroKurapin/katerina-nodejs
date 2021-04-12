@@ -20,7 +20,8 @@ $RECYCLE.BIN/
 Thumbs.db
 
 /src/_fake-data
-.env
+.env*
+!.env.example
 
 # Mac OSX
 .DS_Store

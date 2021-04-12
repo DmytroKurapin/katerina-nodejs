@@ -1,11 +1,17 @@
 const express = require('express');
 const router = express.Router();
+const { isDev, allowedIps } = require('../../config');
 
 router.use('/products', require('./products'));
 
 // admin routes
-// todo add middleware for admin routes
+function adminRouterMiddleware(req, res, next) {
+  if (!isDev && !allowedIps.includes(req.ip)) {
+    return next('router');
+  }
+  next();
+}
 
-router.use('/admin', require('./admin'));
+router.use('/admin', adminRouterMiddleware, require('./admin'));
 
 module.exports = router;

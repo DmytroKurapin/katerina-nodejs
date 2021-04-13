@@ -17,6 +17,6 @@ module.exports = async (req, res) => {
       return res.status(200).json({ status: 'error', message: 'File extension is not permitted' });
     }
   } catch (err) {
-    res.status(500).json({ status: 'error', message: err });
+    res.status(500).json({ status: 'error', message: err.message });
   }
 };

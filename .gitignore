@@ -22,6 +22,7 @@ Thumbs.db
 /src/_fake-data
 .env*
 !.env.example
+/src/public/images/*
 
 # Mac OSX
 .DS_Store

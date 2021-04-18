@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
         const filePath = path.join('images', fileData.name);
         await fileData.mv(path.join(filesUploadFolder, filePath));
 
-        return res.status(200).json({ status: 'success', meta: { path: fileData } });
+        return res.status(200).json({ status: 'success', meta: { path: filePath } });
       }
       return res.status(200).json({ status: 'error', message: 'File extension is not permitted' });
     }

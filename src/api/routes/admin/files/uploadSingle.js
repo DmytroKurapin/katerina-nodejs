@@ -1,6 +1,6 @@
 const path = require('path');
 const { filesUploadFolder } = require('../../../../config');
-const { checkFileExt } = require('../../../../services/helpers');
+const { getAllowedFileType } = require('../../../../services/helpers');
 
 module.exports = async (req, res) => {
   try {
@@ -8,8 +8,9 @@ module.exports = async (req, res) => {
       res.status(200).json({ status: 'error', message: 'No file uploaded' });
     } else {
       const fileData = req.files.file;
-      if (checkFileExt(fileData)) {
-        const filePath = path.join('images', fileData.name);
+      const checkedFile = getAllowedFileType(fileData);
+      if (checkedFile) {
+        const filePath = path.join(`${checkedFile}s`, fileData.name); // convert to images or videos
         await fileData.mv(path.join(filesUploadFolder, filePath));
 
         return res.status(200).json({ status: 'success', meta: { path: filePath } });

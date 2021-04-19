@@ -23,6 +23,7 @@ Thumbs.db
 .env*
 !.env.example
 /src/public/images/*
+/src/public/videos/*
 
 # Mac OSX
 .DS_Store

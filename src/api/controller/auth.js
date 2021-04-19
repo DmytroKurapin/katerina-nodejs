@@ -11,12 +11,6 @@ const login = async userData => {
 
   try {
     const foundUser = await User.findOne({ user });
-    // eslint-disable-next-line
-    console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-    // eslint-disable-next-line
-    console.log(foundUser);
-    // eslint-disable-next-line
-    console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~');
     if (!foundUser) {
       console.error('login failed. User not found', 'ip', ip, 'user', user);
       return false;

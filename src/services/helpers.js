@@ -1,11 +1,18 @@
 /**
- * check if file extension is permitted
+ * check if file extension is permitted and what if the file type
  * @param {File} file - file data
- * @returns {boolean} - is allowed or not
+ * @returns {'image' | 'video' | null} - what is the file type or null if not acceptable
  */
-const checkFileExt = function(file) {
+const getAllowedFileType = function(file) {
   // Accept images or video only
-  return file.name && !!file.name.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF|mp4|MP4|mov|MOV|ogg|OGG)$/);
+  if (!file.name) {
+    return null;
+  } else if (file.name.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
+    return 'image';
+  } else if (file.name.match(/\.(mp4|MP4|mov|MOV|ogg|OGG)$/)) {
+    return 'video';
+  }
+  return null;
 };
 
 const generateVendorCode = (vendorPrefix, lastVendor, vendorStartNumber) => {
@@ -13,5 +20,5 @@ const generateVendorCode = (vendorPrefix, lastVendor, vendorStartNumber) => {
   return `${vendorPrefix}${lastNumber + 1}`;
 };
 
-exports.checkFileExt = checkFileExt;
+exports.getAllowedFileType = getAllowedFileType;
 exports.generateVendorCode = generateVendorCode;

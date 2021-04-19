@@ -12,6 +12,7 @@ const productSchema = mongoose.Schema(
     images: { type: Object, required: true },
     sizes: { type: Object, required: true },
     price: { type: String, required: true },
+    priceHint: { type: Object, required: true }, // { en: String, he: String }
     order: { type: Number, required: true },
     video: { type: String, default: null },
     related: { type: Object, required: true }, // array of vendor codes

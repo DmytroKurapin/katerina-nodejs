@@ -1,4 +1,5 @@
-const { login } = require('../../../controller/auth');
+/* global reqlib */
+const { login } = reqlib('/src/api/controller/auth');
 
 module.exports = async (req, res) => {
   try {

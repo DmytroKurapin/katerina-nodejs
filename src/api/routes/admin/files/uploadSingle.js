@@ -1,6 +1,7 @@
+/* global reqlib */
 const path = require('path');
-const { filesUploadFolder } = require('../../../../config');
-const { getAllowedFileType } = require('../../../../services/helpers');
+const { filesUploadFolder } = reqlib('/src/config');
+const { getAllowedFileType } = reqlib('/src/services/helpers');
 
 module.exports = async (req, res) => {
   try {

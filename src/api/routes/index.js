@@ -1,6 +1,7 @@
+/* global reqlib */
 const express = require('express');
 const router = express.Router();
-const { isDev, allowedIps } = require('../../config');
+const { isDev, allowedIps } = reqlib('/src/config');
 
 router.use('/products', require('./products'));
 

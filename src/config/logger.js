@@ -1,3 +1,4 @@
+/* global reqlib */
 const appRoot = require('app-root-path');
 const { addColors, createLogger, format, transports } = require('winston');
 const config = reqlib('/src/config');
@@ -52,7 +53,5 @@ const logger = createLogger({
   transports: transportsOpts,
   exitOnError: false // do not exit on handled exceptions
 });
-
-
 
 module.exports = logger;

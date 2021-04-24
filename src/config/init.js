@@ -1,3 +1,4 @@
+/* global reqlib */
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const { mongoUrl, isDev } = require('../config');

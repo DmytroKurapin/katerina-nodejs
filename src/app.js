@@ -1,9 +1,12 @@
+global.reqlib = require('app-root-path').require;
+
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
+
+const app = express();
 const config = require('./config/init');
 const { filesUploadFolder } = require('./config');
-const fileUpload = require('express-fileupload');
 
 //routes
 const routes = require('./api/routes');
@@ -22,6 +25,8 @@ app.use(bodyParser.json({ limit: '50mb', extended: true }));
 app.use(express.static(filesUploadFolder));
 
 app.use(config.cors);
+
+app.use(config.morganMiddleware());
 
 app.use('/api', routes);
 // app.get('*', (req, res) => {

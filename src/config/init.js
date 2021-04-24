@@ -1,6 +1,7 @@
 /* global reqlib */
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+const rateLimit = require('express-rate-limit');
 const { mongoUrl, isDev } = reqlib('/src/config');
 const logger = reqlib('/src/config/logger');
 
@@ -66,5 +67,11 @@ module.exports = {
       // See the methods above.
       { stream, skip }
     );
-  }
+  },
+
+  requestsLimiter: rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 5, // limit each IP to 5 requests per windowMs
+    message: { status: 'error', message: 'Too Many Requests' }
+  })
 };

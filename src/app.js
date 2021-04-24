@@ -3,7 +3,7 @@ global.reqlib = require('app-root-path').require;
 const express = require('express');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
-const helmet = require("helmet");
+const helmet = require('helmet');
 
 const app = express();
 const config = require('./config/init');

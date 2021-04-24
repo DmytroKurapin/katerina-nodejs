@@ -3,6 +3,7 @@ global.reqlib = require('app-root-path').require;
 const express = require('express');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
+const helmet = require("helmet");
 
 const app = express();
 const config = require('./config/init');
@@ -12,6 +13,10 @@ const { filesUploadFolder } = require('./config');
 const routes = require('./api/routes');
 
 config.initializeDB();
+
+app.use(config.morganMiddleware());
+app.use(helmet());
+app.use(config.cors);
 
 // enable files upload
 app.use(
@@ -23,10 +28,6 @@ app.use(
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(bodyParser.json({ limit: '50mb', extended: true }));
 app.use(express.static(filesUploadFolder));
-
-app.use(config.cors);
-
-app.use(config.morganMiddleware());
 
 app.use('/api', routes);
 // app.get('*', (req, res) => {

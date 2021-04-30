@@ -9,5 +9,9 @@ router.post('/save', require('./saveChanges'));
  * POST (Insert) cloned products to another category
  */
 router.post('/duplicate', require('./duplicateProductsToCategory'));
+/**
+ * GET all products by category
+ */
+router.get('/category/:category/:order?', require('./getByCategory'));
 
 module.exports = router;

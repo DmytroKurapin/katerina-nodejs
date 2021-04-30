@@ -19,12 +19,13 @@ const getMultipleByVendorCodes = async vendorCodes => {
 };
 /**
  * get All products from DB by category and other params
- * @param {{ category: string, order: number }} data - search conditions
+ * @param {{ category: string, order, showHidden?: boolean }} data - search conditions
  * @returns {Promise<Object[]>} - array of products
  */
-const getAllByCategory = async ({ category, order }) => {
+const getAllByCategory = async ({ category, order: sortOrder, showHidden = false }) => {
   // subCat = null means no filter by sub categories
-  const queryObj = Object.assign({ category });
+  const queryObj = Object.assign({ category }, showHidden ? {} : { hidden: false });
+  const order = isNaN(Number(sortOrder)) ? -1 : Number(sortOrder);
 
   return Product.find(queryObj, { _id: 0 }, { sort: { order } })
     .collation({ locale: 'en_US', numericOrdering: true })
@@ -140,7 +141,7 @@ const insertClonedProducts = async (vendorPrefix, startNum, products) => {
 
     await Product.bulkWrite(bulkData);
   } catch (e) {
-    console.error(e)
+    console.error(e);
     return false;
   }
   return true;

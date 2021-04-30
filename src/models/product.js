@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const productSchema = mongoose.Schema(
+const productSchema = new mongoose.Schema(
   {
     _id: mongoose.SchemaTypes.ObjectID,
     category: { type: String, required: true },
@@ -16,7 +16,9 @@ const productSchema = mongoose.Schema(
     order: { type: Number, required: true },
     video: { type: String, default: null },
     related: { type: Object, required: true }, // array of vendor codes
-    similar: { type: Object, required: true } // array of vendor codes
+    similar: { type: Object, required: true }, // array of vendor codes
+    newlyAdded: { type: Boolean, default: false },
+    hidden: { type: Boolean, default: false }
   },
   { _id: false }
 );

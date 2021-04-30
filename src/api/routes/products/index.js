@@ -4,7 +4,7 @@ const router = express.Router();
 /**
  * GET all products by category
  */
-router.get('/category/:category/:order?', require('./getByCategory'));
+router.get('/category/:category/:order?/:newFirst?', require('./getByCategory'));
 /**
  * GET product by vendor code
  */

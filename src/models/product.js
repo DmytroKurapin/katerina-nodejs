@@ -25,12 +25,4 @@ const productSchema = new mongoose.Schema(
 // subCategories is the last in the list of indexes, because there cases when any subCat is selected
 productSchema.index({ category: 1, order: -1, subCategories: 1 });
 
-/*
-todo
- "specialOffer": {
-  "price": null,
-   "isNew": null
-},
-*/
-
 module.exports = mongoose.model('Products', productSchema);

@@ -1,7 +1,8 @@
 /* global reqlib */
 const appRoot = require('app-root-path');
 const { addColors, createLogger, format, transports } = require('winston');
-const config = reqlib('/src/config');
+const config = require('../config');
+// const config = reqlib('/src/config');
 
 const { colorize, combine, timestamp, uncolorize, printf } = format;
 

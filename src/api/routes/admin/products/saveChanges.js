@@ -1,5 +1,6 @@
 /* global reqlib */
-const { updateSingleByVendorCode, updateMultipleByVendorCodes } = reqlib('/src/api/controller/product');
+const { updateSingleByVendorCode, updateMultipleByVendorCodes } = require('../../../../api/controller/product');
+// const { updateSingleByVendorCode, updateMultipleByVendorCodes } = reqlib('/src/api/controller/product');
 
 module.exports = async (req, res) => {
   try {

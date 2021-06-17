@@ -1,5 +1,6 @@
 /* global reqlib */
-const { insertClonedProducts } = reqlib('/src/api/controller/product');
+// const { insertClonedProducts } = reqlib('/src/api/controller/product');
+const { insertClonedProducts } = require('../../../../api/controller/product');
 
 module.exports = async (req, res) => {
   try {

@@ -1,5 +1,6 @@
 /* global reqlib */
-const { signup } = reqlib('/src/api/controller/auth');
+// const { signup } = reqlib('/src/api/controller/auth');
+const { signup } = require('../../../../api/controller/auth');
 
 module.exports = async (req, res) => {
   try {

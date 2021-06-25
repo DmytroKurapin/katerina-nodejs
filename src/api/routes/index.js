@@ -4,16 +4,21 @@ const router = express.Router();
 const { isDev, allowedIps } = require('../../config');
 // const { isDev, allowedIps } = reqlib('/src/config');
 
-router.use('/products', require('./products'));
+// console.log(999)
+
+router.use('/products',  require('./products'));
 
 // admin routes
 function adminRouterMiddleware(req, res, next) {
-  if (!isDev && !allowedIps.includes(req.ip)) {
+	console.log(req.headers['x-forwarded-for'])
+  if (!isDev && !allowedIps.includes(req.headers['x-forwarded-for'])) {
     return next('router');
   }
   next();
 }
 
 router.use('/admin', adminRouterMiddleware, require('./admin'));
+
+// router.use('*', (req) => {console.log(req)})
 
 module.exports = router;

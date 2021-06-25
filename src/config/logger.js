@@ -26,7 +26,7 @@ addColors(colors);
 
 // define the custom settings for each transport (file, console)
 const transportFileOpts = {
-  filename: `${appRoot}/logs/app.log`,
+  filename: './logs/app.log',
   handleExceptions: true,
   json: true,
   maxsize: 5242880, // 5MB
@@ -36,7 +36,7 @@ const transportFileOpts = {
 const transportsOpts = [
   new transports.Console(),
   // where to pint error logs
-  new transports.File(Object.assign({}, transportFileOpts, { filename: `${appRoot}/logs/error.log`, level: 'error' })),
+  new transports.File(Object.assign({}, transportFileOpts, { filename: './logs/error.log', level: 'error' })),
   // Allow to print all the error message inside the app.log file
   // (also the error log that are also printed inside the error.log)
   new transports.File(Object.assign({}, transportFileOpts, { colorize: false }))

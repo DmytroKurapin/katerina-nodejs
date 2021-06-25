@@ -17,8 +17,9 @@ const productSchema = new mongoose.Schema(
     video: { type: String, default: null },
     related: { type: Object, required: true }, // array of vendor codes
     similar: { type: Object, required: true }, // array of vendor codes
-    newlyAdded: { type: Boolean, default: false },
-    hidden: { type: Boolean, default: false }
+    forceNew: { type: Boolean, default: false },
+    hidden: { type: Boolean, default: false },
+    addedDate: { type: Number, required: true } // Date.now() - timestamp
   },
   { _id: false }
 );

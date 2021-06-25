@@ -26,7 +26,7 @@ const getAllByCategory = async ({ category, order: sortOrder, showHidden = false
   // subCat = null means no filter by sub categories
   const queryObj = Object.assign({ category }, showHidden ? {} : { hidden: false });
   const order = isNaN(Number(sortOrder)) ? -1 : Number(sortOrder);
-  const sortObj = newFirst ? { newlyAdded: -1, order } : { order };
+  const sortObj = newFirst ? { forceNew: -1, addedDate: -1, order } : { order };
 
   return Product.find(queryObj, { _id: 0 }, { sort: sortObj })
     .collation({ locale: 'en_US', numericOrdering: true })

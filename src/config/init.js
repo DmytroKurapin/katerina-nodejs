@@ -2,14 +2,12 @@
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
-const { mongoUrl, isDev } = require('../config');
-// const { mongoUrl, isDev } = reqlib('/src/config');
-const logger = require('../config/logger');
-// const logger = reqlib('/src/config/logger');
+const { mongoUrl, isDev } = reqlib('/src/config');
+const logger = reqlib('/src/config/logger');
 
 module.exports = {
   initializeDB: async () => {
-    mongoose.connect(mongoUrl, { useNewUrlParser: true, useFindAndModify: false });
+    await mongoose.connect(mongoUrl, { useNewUrlParser: true, useFindAndModify: false });
 
     mongoose.connection.on('connected', function () {
       console.log('Mongoose default connection open');

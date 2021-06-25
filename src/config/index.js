@@ -1,4 +1,6 @@
-require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
+const path = require('path');
+// require('dotenv').config({ path: `.env.production` });
+require('dotenv').config({ path: path.join(__dirname, `../../.env.${process.env.NODE_ENV}`) });
 module.exports = {
   endpoint: process.env.API_URL,
   masterKey: process.env.API_KEY,

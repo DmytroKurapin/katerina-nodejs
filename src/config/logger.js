@@ -1,8 +1,7 @@
 /* global reqlib */
 const appRoot = require('app-root-path');
 const { addColors, createLogger, format, transports } = require('winston');
-const config = require('../config');
-// const config = reqlib('/src/config');
+const config = reqlib('/src/config');
 
 const { colorize, combine, timestamp, uncolorize, printf } = format;
 
@@ -26,6 +25,7 @@ addColors(colors);
 
 // define the custom settings for each transport (file, console)
 const transportFileOpts = {
+  // filename: './logs/app.log',
   filename: `${appRoot}/logs/app.log`,
   handleExceptions: true,
   json: true,
@@ -36,6 +36,7 @@ const transportFileOpts = {
 const transportsOpts = [
   new transports.Console(),
   // where to pint error logs
+  //   new transports.File(Object.assign({}, transportFileOpts, { filename: './logs/error.log', level: 'error' })),
   new transports.File(Object.assign({}, transportFileOpts, { filename: `${appRoot}/logs/error.log`, level: 'error' })),
   // Allow to print all the error message inside the app.log file
   // (also the error log that are also printed inside the error.log)

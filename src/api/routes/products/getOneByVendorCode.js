@@ -1,6 +1,5 @@
 /* global reqlib */
-// const productController = reqlib('/src/api/controller/product');
-const productController = require('../../../api/controller/product');
+const productController = reqlib('/src/api/controller/product');
 
 module.exports = async (req, res, next) => {
   const { vendorCode } = req.params;

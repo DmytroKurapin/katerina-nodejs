@@ -6,9 +6,9 @@ const logger = require('./config/logger');
 const server = http.createServer(app);
 
 server.on('error', function (e) {
-  console.log(e);
+  logger.error('server.js on error: ' + e.message);
 });
 
 server.listen(port, () => {
-  logger.debug(`Server is up and running on port: ${port}`);
+  logger.info(`Server is up and running on port: ${port}`);
 });

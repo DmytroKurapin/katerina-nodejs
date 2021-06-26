@@ -3,7 +3,7 @@ global.reqlib = require('app-root-path').require;
 const express = require('express');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
-const helmet = require('helmet');
+// const helmet = require('helmet'); // todo uncomment for https
 
 const app = express();
 const config = require('./config/init');
@@ -15,7 +15,7 @@ const routes = require('./api/routes');
 config.initializeDB();
 
 app.use(config.morganMiddleware());
-app.use(helmet()); // todo unccoemnt of https
+// app.use(helmet()); // todo uncomment for https
 app.use(config.cors);
 
 // load admin files
@@ -30,7 +30,6 @@ app.use('/be-static', express.static(filesUploadFolder));
 app.use('/api', routes);
 // load admin table
 app.get('/table', (req, res) => {
-  // console.log(req);
   res.sendFile(path.join(__dirname, '../../dist/index.html'));
 });
 

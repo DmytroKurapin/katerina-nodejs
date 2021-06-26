@@ -1,5 +1,7 @@
-const Product = require('../../models/product');
-const { generateVendorCode } = require('../../services/helpers');
+/* global reqlib */
+const Product = reqlib('/src/models/product');
+const { generateVendorCode } = reqlib('/src/services/helpers');
+const logger = reqlib('/src/config/logger');
 
 /**
  * get One product from DB by its vendor code
@@ -142,7 +144,7 @@ const insertClonedProducts = async (vendorPrefix, startNum, products) => {
 
     await Product.bulkWrite(bulkData);
   } catch (e) {
-    console.error(e);
+    logger.error(`insertClonedProducts error: ${e.message}`);
     return false;
   }
   return true;

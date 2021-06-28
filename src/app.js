@@ -19,7 +19,7 @@ app.use(config.morganMiddleware());
 app.use(config.cors);
 
 // load admin files
-app.use('/files', express.static(path.join(__dirname, '../../dist')));
+app.use('/table', express.static(path.join(__dirname, '../../dist')));
 // enable files upload
 app.use(fileUpload({ createParentPath: true }));
 

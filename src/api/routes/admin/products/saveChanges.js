@@ -17,6 +17,6 @@ module.exports = async (req, res) => {
       ? res.status(200).json({ status: 'success', meta: {} })
       : res.status(500).json({ status: 'error', message: 'Failed: Issue on updating' });
   } catch (err) {
-    res.status(500).json({ status: 'error', message: err.message });
+    return res.status(500).json({ status: 'error', message: err.message });
   }
 };

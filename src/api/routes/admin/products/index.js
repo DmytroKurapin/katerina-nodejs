@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const router = express.Router();
 
 /**
@@ -12,6 +13,6 @@ router.post('/duplicate', require('./duplicateProductsToCategory'));
 /**
  * GET all products by category
  */
-router.get('/category/:category/:order?', require('./getByCategory'));
+router.get('/category/:category/:order?/:newFirst?', require(path.join(__dirname, '../../products/getByCategory')));
 
 module.exports = router;

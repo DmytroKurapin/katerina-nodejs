@@ -13,6 +13,6 @@ router.post('/duplicate', require('./duplicateProductsToCategory'));
 /**
  * GET all products by category
  */
-router.get('/category/:category/:order?/:newFirst?', require(path.join(__dirname, '../../products/getByCategory')));
+router.get('/category/:category/:order?/:sorting?', require(path.join(__dirname, '../../products/getByCategory')));
 
 module.exports = router;

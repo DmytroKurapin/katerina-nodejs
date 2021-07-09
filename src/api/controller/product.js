@@ -21,14 +21,35 @@ const getMultipleByVendorCodes = async vendorCodes => {
 };
 /**
  * get All products from DB by category and other params
- * @param {{ category: string, order, showHidden?: boolean, newFirst?: boolean }} data - search conditions
+ * @param {
+ * { category: string, order, showHidden?: boolean, sorting?: 'new' | 'pricelow' | 'pricehigh' }
+ * } data - search conditions
  * @returns {Promise<Object[]>} - array of products
  */
-const getAllByCategory = async ({ category, order: sortOrder, showHidden = false, newFirst = false }) => {
+const getAllByCategory = async ({ category, order: sortOrder, showHidden = false, sorting }) => {
   // subCat = null means no filter by sub categories
   const queryObj = Object.assign({ category }, showHidden ? {} : { hidden: false });
   const order = isNaN(Number(sortOrder)) ? -1 : Number(sortOrder);
-  const sortObj = newFirst ? { forceNew: -1, addedDate: -1, order } : { order };
+
+  let sortObj = {};
+  if (sorting) {
+    switch (sorting) {
+      case 'new': {
+        sortObj = { forceNew: -1, addedDate: -1, order };
+        break;
+      }
+      case 'pricehigh': {
+        sortObj = { price: -1, order };
+        break;
+      }
+      case 'pricelow': {
+        sortObj = { price: 1, order };
+        break;
+      }
+    }
+  } else {
+    sortObj = { order };
+  }
 
   return Product.find(queryObj, { _id: 0 }, { sort: sortObj })
     .collation({ locale: 'en_US', numericOrdering: true })

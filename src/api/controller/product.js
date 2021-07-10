@@ -2,6 +2,7 @@
 const Product = reqlib('/src/models/product');
 const { generateVendorCode } = reqlib('/src/services/helpers');
 const logger = reqlib('/src/config/logger');
+const KNOWN_SORTING = ['new', 'pricelow', 'pricehigh'];
 
 /**
  * get One product from DB by its vendor code
@@ -32,7 +33,7 @@ const getAllByCategory = async ({ category, order: sortOrder, showHidden = false
   const order = isNaN(Number(sortOrder)) ? -1 : Number(sortOrder);
 
   let sortObj = {};
-  if (sorting) {
+  if (sorting && KNOWN_SORTING.includes(sorting)) {
     switch (sorting) {
       case 'new': {
         sortObj = { forceNew: -1, addedDate: -1, order };

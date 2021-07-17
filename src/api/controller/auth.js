@@ -1,12 +1,12 @@
 /* global reqlib */
-const User = require('../../models/user');
-const { encryptLoginData, isAuthenticated } = require('../../services/authHelpers');
+const User = reqlib('/src/models/user');
+const { encryptLoginData, isAuthenticated } = reqlib('/src/services/authHelpers');
 const logger = reqlib('/src/config/logger');
 
 /**
  * authenticate user on login
  * @param {{ user: string, pass: string, ip: string }} userData - user login data
- * @returns {Promise<boolean>} - product object
+ * @returns {Promise<boolean>} - is logged in
  */
 const login = async userData => {
   const { user, pass, ip } = userData;
@@ -34,7 +34,7 @@ const login = async userData => {
 /**
  * add new user to DB if username is available
  * @param {{ user: string, pass: string, ip: string }} userData - user signup data
- * @returns {Promise<boolean>} - product object array
+ * @returns {Promise<boolean>} - is signed up
  */
 const signup = async userData => {
   const { user, pass, ip } = userData;
